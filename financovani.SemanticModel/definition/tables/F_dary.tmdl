@@ -1,0 +1,73 @@
+table F_dary
+	lineageTag: 24eb14b0-72d6-41f3-878d-67bdddc133a6
+
+	column date_year
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 0d8c0034-d814-476a-a000-4337aeea30f7
+		summarizeBy: none
+		sourceColumn: date_year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column party_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6220cfe2-851a-4817-a6be-aad54c1e0d31
+		summarizeBy: none
+		sourceColumn: party_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column donor_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b26cc9d4-c4c1-43be-9543-c8f860811608
+		summarizeBy: none
+		sourceColumn: donor_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column donor_amount
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2433de2a-93d8-4850-88cb-173f3cc08df0
+		summarizeBy: sum
+		sourceColumn: donor_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column donor_key
+		dataType: string
+		isHidden
+		lineageTag: ee63b259-b0f0-4c30-a9d9-d97f7c2c75c6
+		summarizeBy: none
+		sourceColumn: donor_key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_dary = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\F_dary.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date_year", type date}, {"party_key", Int64.Type}, {"donor_date", type date}, {"donor_amount", Currency.Type}, {"donor_key", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+	annotation TabularEditor_TableGroup = FACTs
+

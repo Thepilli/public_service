@@ -1,0 +1,17 @@
+{
+  "name": "Custom",
+  "textClasses": {
+    "label": {
+      "fontSize": 8
+    },
+    "callout": {
+      "fontSize": 15
+    },
+    "title": {
+      "fontSize": 10
+    },
+    "header": {
+      "fontSize": 10
+    }
+  }
+}

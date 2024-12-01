@@ -1,60 +1,61 @@
 table F_zamestnanci
-	lineageTag: 4ad7267f-2101-49e5-8122-03698a812bff
+	lineageTag: 11be73bb-ed60-442c-9391-23a7d7746bc8
 
-	column ic
-		dataType: int64
-		formatString: 0
-		lineageTag: bf4b638d-f01b-4a2d-86c4-150e398905f0
-		summarizeBy: none
-		sourceColumn: ic
-
-		annotation SummarizationSetBy = Automatic
-
-	column job
-		dataType: string
-		lineageTag: 92d4e7e1-2afe-47df-8cd7-aa20b9d53058
-		summarizeBy: none
-		sourceColumn: job
-
-		annotation SummarizationSetBy = Automatic
-
-	column number
-		dataType: int64
-		formatString: 0
-		lineageTag: 805d0eee-2b42-47d1-a432-1b675899d3af
-		summarizeBy: sum
-		sourceColumn: number
-
-		annotation SummarizationSetBy = Automatic
-
-	column Date
+	column date_year
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
-		lineageTag: 15c3445d-3765-49d2-88c8-0b74c085bf58
+		lineageTag: 4a0b7872-8977-4466-a075-844a29565b0d
 		summarizeBy: none
-		sourceColumn: Date
+		sourceColumn: date_year
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	column party_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b90711d8-2d9e-4806-bf99-d75b4600eacb
+		summarizeBy: none
+		sourceColumn: party_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e73bd3d6-599a-47c4-b7bc-79a1cd4a9f4e
+		summarizeBy: none
+		sourceColumn: job_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_count
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 63642e59-96dc-44fa-afaf-82cd36e5f46f
+		summarizeBy: sum
+		sourceColumn: job_count
+
+		annotation SummarizationSetBy = Automatic
+
 	partition F_zamestnanci = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\CURATED\zamest.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\F_zamestnanci.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"year", Int64.Type}, {"ic", Int64.Type}, {"job", type text}, {"number", Int64.Type}}),
-				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([job] <> "")),
-				    #"Capitalized Each Word" = Table.TransformColumns(#"Filtered Rows",{{"job", Text.Proper, type text}}),
-				    #"Trimmed Text" = Table.TransformColumns(#"Capitalized Each Word",{{"job", Text.Trim, type text}}),
-				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"job", Text.Clean, type text}}),
-				    #"Inserted Date" = Table.AddColumn(#"Cleaned Text", "Date", each Date.From(Text.From([year], "en-US")), type date),
-				    #"Removed Columns" = Table.RemoveColumns(#"Inserted Date",{"year"})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date_year", type date}, {"party_key", Int64.Type}, {"job_key", Int64.Type}, {"job_count", Int64.Type}})
 				in
-				    #"Removed Columns"
+				    #"Changed Type"
 
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+
+	annotation TabularEditor_TableGroup = FACTs
 

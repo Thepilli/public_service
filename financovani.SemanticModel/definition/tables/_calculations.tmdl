@@ -1,0 +1,220 @@
+table _calculations
+	lineageTag: fceda5fa-cc96-4daa-ba1b-a585be2df39f
+
+	measure _blank = ```
+			BLANK() 
+			```
+		formatString: 0
+		displayFolder: format
+		lineageTag: 5f621c5f-2889-47cc-9c2f-73f163bebb58
+
+	/// This measure is the DISTINCTCOUNT of column 'F_dary'[donor_key]
+	measure 'DISTINCTCOUNT of donor_key' = DISTINCTCOUNT('F_dary'[donor_key])
+		formatString: 0.00
+		displayFolder: aggs.\F_dary
+		lineageTag: 396cd315-55a2-4c45-a7dc-3df95b505126
+
+	/// This measure is the sum of column 'F_dary'[donor_amount]
+	measure 'SUM of donor_amount' = SUM('F_dary'[donor_amount])
+		formatString: #,##0.00
+		displayFolder: aggs.\F_dary
+		lineageTag: bd757a6b-7b3a-4c1d-8f95-8ed51ee5ca5d
+
+	/// This measure is the sum of column 'F_rozvaha'[amount]
+	measure 'SUM of amount' = SUM('F_rozvaha'[amount])
+		formatString: #,##0.00
+		displayFolder: aggs.\F_rozvaha
+		lineageTag: fa132557-7022-4311-aeb3-d9cf2384c4d8
+
+	/// This measure is the DISTINCTCOUNT of column 'F_zamestnanci'[job_key]
+	measure 'DISTINCTCOUNT of job_key' = DISTINCTCOUNT('F_zamestnanci'[job_key])
+		formatString: 0.00
+		displayFolder: aggs.\F_zamestnanci
+		lineageTag: 3b5eca21-3806-453e-b549-a1d2baaf7429
+
+	/// This measure is the sum of column 'F_zamestnanci'[job_count]
+	measure 'SUM of job_count' = SUM('F_zamestnanci'[job_count])
+		formatString: #,##0.00
+		displayFolder: aggs.\F_zamestnanci
+		lineageTag: bc19e616-d8ec-418a-81d3-6aed2d24af78
+
+	measure Prijmy =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_type] = "Příjmy"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: cb96b237-3bda-471c-bd50-df3a6a79465f
+
+	measure Vydaje =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_type] = "Výdaje"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: 8735b4e9-5683-484e-8997-c7c3c320167f
+
+	measure 'Prijmy P_1' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_1"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: 14e226e8-beb8-4668-bbf4-61ca690e1ab2
+
+	measure 'Prijmy P_2' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_2"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: acef8c07-f66d-4469-ba77-ec230d76dbf1
+
+	measure 'Prijmy P_3' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_3"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: c5a5974e-1445-467d-bc14-5d3c6991b80e
+
+	measure 'Prijmy P_4' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_4"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: 97f779ce-1eac-4937-a335-0b2f51780bd3
+
+	measure 'Prijmy P_5' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_5"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: d561f0c2-de4d-49e3-aee9-3d08caeded84
+
+	measure 'Prijmy P_6' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_6"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: 65f9e0b6-7741-4dcd-9a5f-014f60842403
+
+	measure 'Prijmy P_7' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_7"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: 65dff27a-2aa4-493a-b293-96221d5c96d6
+
+	measure 'Prijmy P_8' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_8"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: 0c860202-4d62-45eb-be6b-43d2cecf65b9
+
+	measure 'Prijmy P_9' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_9"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: 3a6de54a-baaa-4784-8620-e8809525846a
+
+	measure 'Prijmy P_10' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_10"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: df58caac-d6df-4428-948b-c289c1e08c6f
+
+	measure 'Prijmy P_11' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "P_11"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Příjmy
+		lineageTag: 4cd18ebe-3376-41fb-b70a-ea30c9890025
+
+	measure 'Vydaje V_1' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_1"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: dba41fc4-3eb9-4a63-80bd-afaee6171553
+
+	measure 'Vydaje V_2' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_2"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: 6621b116-2850-48dc-8aeb-7ccba613933d
+
+	measure 'Vydaje V_3a' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_3a"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: 0057304d-4caf-43bb-9fa1-22b48202bd1b
+
+	measure 'Vydaje V_3b' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_3b"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: 5266147e-61ae-436d-af6d-12982be995b6
+
+	measure 'Vydaje V_3c' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_3c"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: e1b33ae8-1d2b-450d-90ae-c265de467a70
+
+	measure 'Vydaje V_3d' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_3d"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: ab7bdbe2-1248-41ae-b4d8-eae2d33ac01f
+
+	measure 'Vydaje V_3e' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_3e"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: f14d58ed-65b7-454a-b267-200df25f0a28
+
+	measure 'Vydaje V_3f' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] = "V_3f"
+			)
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: 801bfb6a-9d23-4e12-acc1-80c5fd272ee6
+
+	partition _calculations = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlCKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [_calculations = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"_calculations", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"_calculations"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,45 @@
+table D_keys
+	lineageTag: a6247a2f-7bdf-4c3a-ac00-516171bac000
+
+	column bod_key
+		dataType: string
+		lineageTag: 8ed63076-f98d-4f37-aac8-bfff692be0e6
+		summarizeBy: none
+		sourceColumn: bod_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column bod_desc
+		dataType: string
+		lineageTag: 046b4e1f-3a81-4d84-b229-10eeb128504a
+		summarizeBy: none
+		sourceColumn: bod_desc
+
+		annotation SummarizationSetBy = Automatic
+
+	column bod_type
+		dataType: string
+		lineageTag: 49ca6392-27bb-47c6-986c-90fe524dfa59
+		summarizeBy: none
+		sourceColumn: bod_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column bod_full = D_keys[bod_key]&" - "&D_keys[bod_desc]
+		lineageTag: f9c90a14-07fc-4067-b637-0aa253315716
+
+	partition D_keys = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\D_keys.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+				in
+				    #"Promoted Headers"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+	annotation TabularEditor_TableGroup = DIMs
+

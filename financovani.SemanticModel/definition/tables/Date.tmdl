@@ -3,112 +3,92 @@ table Date
 	dataCategory: Time
 
 	column Date
-		dataType: dateTime
 		isKey
 		formatString: m/d/yyyy
 		lineageTag: 40acb0e8-c296-4db7-ae8a-d0098f089b39
 		dataCategory: PaddedDateTableDates
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Date]
 
 		annotation SQLBI_AttributeTypes = Date
 
 	column Year
-		dataType: int64
 		lineageTag: b4d0bb02-af60-4590-8377-860be022fa77
 		dataCategory: Years
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Year]
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Year Quarter Number'
-		dataType: int64
 		isHidden
 		lineageTag: 74639654-0e3e-40aa-814a-74dd4c1e3811
 		dataCategory: Quarters
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Year Quarter Number]
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Year Quarter'
-		dataType: string
 		lineageTag: 400878ab-0501-44f2-8e26-8f060882a2ab
 		dataCategory: Quarters
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Year Quarter]
 		sortByColumn: 'Year Quarter Number'
 
 	column Quarter
-		dataType: string
 		lineageTag: 7f83ef4d-61f5-4091-8102-3b13df54904c
 		dataCategory: QuarterOfYear
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Quarter]
 
 	column 'Year Month'
-		dataType: string
 		lineageTag: 81df44db-5e69-49cf-893a-ed37685f68b0
 		dataCategory: Months
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Year Month]
 		sortByColumn: 'Year Month Number'
 
 	column 'Year Month Number'
-		dataType: int64
 		isHidden
 		lineageTag: 8ba88acb-a51f-4842-9cc7-4bdd4c253061
 		dataCategory: Months
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Year Month Number]
 
 		annotation SummarizationSetBy = Automatic
 
 	column Month
-		dataType: string
 		lineageTag: c54e34cf-02c7-4c32-893b-02ef650d5cdd
 		dataCategory: MonthOfYear
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Month]
 		sortByColumn: 'Month Number'
 
 	column 'Month Number'
-		dataType: int64
 		isHidden
 		lineageTag: 2efe1a82-80be-4132-8e12-3795f792dc63
 		dataCategory: MonthOfYear
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Month Number]
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Day of Week Number'
-		dataType: int64
 		isHidden
 		lineageTag: 3c588f90-9926-4b85-8c63-14ea6fa7ba33
 		dataCategory: DayOfWeek
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Day of Week Number]
 
 		annotation SQLBI_AttributeTypes = DayOfWeek
@@ -118,24 +98,20 @@ table Date
 		annotation SummarizationSetBy = Automatic
 
 	column 'Day of Week'
-		dataType: string
 		lineageTag: 29eda136-ae3e-4a18-ae6d-52450aeacfc1
 		dataCategory: DayOfWeek
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[Day of Week]
 		sortByColumn: 'Day of Week Number'
 
 		annotation SQLBI_FilterSafe = True
 
 	column DateWithTransactions
-		dataType: boolean
 		isHidden
 		lineageTag: dc85950e-da4e-4362-8668-40ef59e57c5a
 		summarizeBy: none
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: DateAutoTemplate[DateWithTransactions]
 
 		annotation SQLBI_AttributeTypes = DateDuration
@@ -164,4 +140,6 @@ table Date
 	annotation SQLBI_TemplateTable = Date
 
 	annotation SQLBI_CalendarType = Calendar
+
+	annotation TabularEditor_TableGroup = DIMs
 

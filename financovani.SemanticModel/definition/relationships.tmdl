@@ -1,52 +1,36 @@
-relationship AutoDetected_ab49927d-9373-43ce-a49b-12b08813b880
-	fromColumn: F_dluhy.ic
-	toColumn: D_party.ic
+relationship 6d0250dd-ff98-55eb-8b3a-4f7a34c6e3a5
+	fromColumn: F_rozvaha.date_year
+	toColumn: Date.Date
 
-relationship AutoDetected_b88ade00-6903-4f60-b15e-bbe4e509b720
-	fromColumn: F_zamestnanci.ic
-	toColumn: D_party.ic
+relationship 815f24c1-c1c4-e263-9e33-ce36b63f1001
+	fromColumn: F_dary.date_year
+	toColumn: Date.Date
 
-relationship b39ef3eb-37b0-7c45-d829-2e08eb543db2
-	fromColumn: F_prijmy.party_key
-	toColumn: D_party.ic
+relationship 0a0d0e61-50da-c991-64d3-c5057c9b272b
+	fromColumn: F_zamestnanci.date_year
+	toColumn: Date.Date
 
-relationship 33836997-70ab-dfa6-c55f-24a3806d23ec
-	fromColumn: F_vydaje.party_key
-	toColumn: D_party.ic
-
-relationship a33b5f98-06db-c085-df2e-d2eb9160d04a
-	fromColumn: F_dary_po.party_key
-	toColumn: D_party.ic
-
-relationship 336a85fe-6215-6647-b7d5-c3ee5a80478d
-	fromColumn: F_dary_fo.party_key
-	toColumn: D_party.ic
-
-relationship ea4b210f-9b4b-4b74-6b81-2b4aaf5e926a
-	fromColumn: F_zamestnanci.job
+relationship AutoDetected_7cfb4018-de86-4ab2-8aff-62cc104b66dc
+	fromColumn: F_zamestnanci.job_key
 	toColumn: D_job.job_key
 
-relationship 48c99c4b-6b49-6df0-2f9a-f96808e9d714
-	fromColumn: F_vydaje.Date
-	toColumn: Date.Date
+relationship 36fa8b4d-2169-6f95-7a69-fedf824e5651
+	fromColumn: F_rozvaha.bod_key
+	toColumn: D_keys.bod_key
 
-relationship e7828f49-b0bd-288f-0ece-2b7addda5ff2
-	fromColumn: F_prijmy.Date
-	toColumn: Date.Date
+relationship 8cad3429-2769-869b-e7a0-4c2c29ec9922
+	fromColumn: F_dary.donor_key
+	toColumn: D_donor.donor_key
 
-relationship c2116e98-3b6c-28bc-f815-4a2f4ad5dc2d
-	fromColumn: F_dluhy.Date
-	toColumn: Date.Date
+relationship 9bce5fcb-1b0f-0e99-3452-c953cca29f70
+	fromColumn: F_dary.party_key
+	toColumn: D_party.party_key
 
-relationship 9220e61d-90f3-c2ce-2de8-8c2f047918e6
-	fromColumn: F_zamestnanci.Date
-	toColumn: Date.Date
+relationship addaebe7-2be0-a891-cb4e-a66150a1803d
+	fromColumn: F_zamestnanci.party_key
+	toColumn: D_party.party_key
 
-relationship 6aa42112-17c2-71d6-5ee1-76f44eca6ba0
-	fromColumn: F_dary_po.Date
-	toColumn: Date.Date
-
-relationship e78fb5ba-fdc5-9848-d367-5d7284cf1f8f
-	fromColumn: F_dary_fo.Date
-	toColumn: Date.Date
+relationship 9e253bf7-12c5-1415-21fb-a57d132458ee
+	fromColumn: F_rozvaha.party_key
+	toColumn: D_party.party_key
 

@@ -1,6 +1,7 @@
 model Model
 	culture: en-US
 	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
 	sourceQueryCulture: en-US
 	dataAccessOptions
 		legacyRedirects
@@ -42,22 +43,25 @@ extendedProperty SQLBI_BRAVO_ManageDatesConfiguration =
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
+annotation PBIDesktopVersion = 2.138.1203.0 (24.11)
 
-annotation PBI_QueryOrder = ["F_prijmy","F_vydaje","F_dary_fo","F_dary_po","F_dluhy","F_zamestnanci","D_job","D_party"]
+annotation PBI_QueryOrder = ["_calculations","F_dary","F_rozvaha","F_zamestnanci","D_donor","D_job","D_keys","D_party"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table F_prijmy
-ref table F_vydaje
-ref table F_dary_fo
-ref table F_dary_po
-ref table F_dluhy
-ref table F_zamestnanci
-ref table D_job
-ref table D_party
+annotation __TEdtr = 1
+
 ref table DateAutoTemplate
 ref table Date
+ref table _calculations
+ref table F_dary
+ref table F_rozvaha
+ref table F_zamestnanci
+ref table D_donor
+ref table D_job
+ref table D_keys
+ref table D_party
+ref table CG_TimeIntelligence
 
 ref cultureInfo en-US
 

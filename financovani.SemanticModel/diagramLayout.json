@@ -4,69 +4,127 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 1.2570207430874429,
         "y": 0
       },
       "nodes": [
         {
           "location": {
-            "x": 0,
-            "y": 521.99938453912966
-          },
-          "nodeIndex": "D_job",
-          "nodeLineageTag": "7e5ec7ff-9818-488a-81c8-dc44eaf8b3b2",
-          "size": {
-            "height": 145,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 356.00770536265219,
-            "y": 0
-          },
-          "nodeIndex": "D_party",
-          "nodeLineageTag": "eed8fbb6-a9a9-4717-81d3-30335645ca19",
-          "size": {
-            "height": 152,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 786.89498517273921,
-            "y": 0
+            "x": 1079.7808183121135,
+            "y": 388.27688603893415
           },
           "nodeIndex": "Date",
           "nodeLineageTag": "3a79ddec-1bda-4894-9d0f-bd4ea105343c",
           "size": {
-            "height": 300,
+            "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3,
+          "expandedHeight": 300
         },
         {
           "location": {
-            "x": 2546.3616394153596,
-            "y": 0.5
+            "x": 1155.0471142109488,
+            "y": 92.877011413384878
           },
           "nodeIndex": "DateAutoTemplate",
           "nodeLineageTag": "2992cf3e-26b0-4413-813c-7d872a43d06b",
           "size": {
-            "height": 300,
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 4,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 2907.2927517944563,
+            "y": 544.13341669560191
+          },
+          "nodeIndex": "_calculations",
+          "nodeLineageTag": "fceda5fa-cc96-4daa-ba1b-a585be2df39f",
+          "size": {
+            "height": 104,
             "width": 234
           },
           "zIndex": 0
         },
         {
           "location": {
-            "x": 956.69436109161745,
-            "y": 494.88705264973061
+            "x": 285.2875427361501,
+            "y": 808.74614302245311
           },
-          "nodeIndex": "F_prijmy",
-          "nodeLineageTag": "6cbfe9ac-92fc-49ee-af0a-31e3d5166fd4",
+          "nodeIndex": "D_donor",
+          "nodeLineageTag": "4e4bc84e-deab-4266-acb9-da6ea287dc79",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 176
+        },
+        {
+          "location": {
+            "x": 305.4560405702486,
+            "y": 593.11296422151793
+          },
+          "nodeIndex": "D_job",
+          "nodeLineageTag": "0b06fe2b-5470-4a78-a4ed-18b09df49ca4",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 154.39743560483635
+        },
+        {
+          "location": {
+            "x": 288.5659216796189,
+            "y": 399.26608152908233
+          },
+          "nodeIndex": "D_keys",
+          "nodeLineageTag": "a6247a2f-7bdf-4c3a-ac00-516171bac000",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 1091.6313567923191,
+            "y": 764.47584414484425
+          },
+          "nodeIndex": "D_party",
+          "nodeLineageTag": "eb09d9b7-5551-4831-92c4-c5dcd5ae6986",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 573.61334851355889,
+            "y": 782.31629464543119
+          },
+          "nodeIndex": "F_dary",
+          "nodeLineageTag": "24eb14b0-72d6-41f3-878d-67bdddc133a6",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 563.05138820288823,
+            "y": 346.71991281491512
+          },
+          "nodeIndex": "F_rozvaha",
+          "nodeLineageTag": "ebc3ad09-515b-460b-a79d-6dc9ca053ad1",
           "size": {
             "height": 176,
             "width": 234
@@ -75,65 +133,26 @@
         },
         {
           "location": {
-            "x": 1236.9232988623551,
-            "y": 504.94321859443005
-          },
-          "nodeIndex": "F_vydaje",
-          "nodeLineageTag": "ee7a75ad-2cb6-4ec7-871d-4e8b9dd1e989",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 417.17239849381792,
-            "y": 791.88094368656436
-          },
-          "nodeIndex": "F_dary_fo",
-          "nodeLineageTag": "214f08e4-c40d-416c-be67-2c8753338f7b",
-          "size": {
-            "height": 296,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 691.11623254911865,
-            "y": 803.997549567903
-          },
-          "nodeIndex": "F_dary_po",
-          "nodeLineageTag": "68b1420b-4163-44c5-9143-c9a2af7e6d2f",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 685.20840257779253,
-            "y": 525.35399004547423
-          },
-          "nodeIndex": "F_dluhy",
-          "nodeLineageTag": "ba29b9e0-02f9-4692-8179-5530dd6dc970",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 325.56837245964778,
-            "y": 530.46275358290086
+            "x": 572.544474376866,
+            "y": 552.97694288171124
           },
           "nodeIndex": "F_zamestnanci",
-          "nodeLineageTag": "4ad7267f-2101-49e5-8122-03698a812bff",
+          "nodeLineageTag": "11be73bb-ed60-442c-9391-23a7d7746bc8",
           "size": {
             "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2906.0052090583063,
+            "y": 411.67864542048483
+          },
+          "nodeIndex": "CG_TimeIntelligence",
+          "nodeLineageTag": "954576a4-7128-452b-b700-c1a7ed4e7a07",
+          "size": {
+            "height": 128,
             "width": 234
           },
           "zIndex": 0

@@ -1,28 +1,33 @@
 table D_party
-	lineageTag: eed8fbb6-a9a9-4717-81d3-30335645ca19
+	lineageTag: eb09d9b7-5551-4831-92c4-c5dcd5ae6986
 
-	column ic
+	/// This measure is the sum of column 'D_party'[party_long]
+	measure 'SELECTEDVALUE of party_long' = SELECTEDVALUE('D_party'[party_long])
+		lineageTag: d0bd4279-9062-4fd1-a6aa-31e2f35c05ab
+
+	column party_key
 		dataType: int64
 		formatString: 0
-		lineageTag: 57f46e2a-8503-4f78-8e87-06f50fee8d2d
+		lineageTag: 272ee5ee-4be5-4f2d-8e41-ffcf36c2f778
 		summarizeBy: none
-		sourceColumn: ic
+		sourceColumn: party_key
 
 		annotation SummarizationSetBy = Automatic
 
-	column shortName
+	column party_short
 		dataType: string
-		lineageTag: 2ec27cdb-b7ad-4adb-96fb-92377be851ef
+		lineageTag: 976dcf82-d274-4cd2-b232-e1dc8fa5b6c3
 		summarizeBy: none
-		sourceColumn: shortName
+		sourceColumn: party_short
 
 		annotation SummarizationSetBy = Automatic
 
-	column longName
+	column party_long
 		dataType: string
-		lineageTag: ff8a0e71-e4e0-43d3-98d2-2be31fc9483a
+		isHidden
+		lineageTag: 81511670-ed23-437e-a99b-ef4cf5196c05
 		summarizeBy: none
-		sourceColumn: longName
+		sourceColumn: party_long
 
 		annotation SummarizationSetBy = Automatic
 
@@ -30,13 +35,15 @@ table D_party
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\CURATED\D_party.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\D_party.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ic", Int64.Type}, {"shortName", type text}, {"longName", type text}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"party_key", Int64.Type}, {"party_short", type text}, {"party_long", type text}})
 				in
 				    #"Changed Type"
 
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+
+	annotation TabularEditor_TableGroup = DIMs
 

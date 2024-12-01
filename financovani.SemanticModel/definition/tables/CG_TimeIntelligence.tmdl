@@ -1,0 +1,147 @@
+table CG_TimeIntelligence
+	lineageTag: 954576a4-7128-452b-b700-c1a7ed4e7a07
+
+	calculationGroup
+
+		calculationItem PY =
+				CALCULATE(
+				    SELECTEDMEASURE( ),
+				    SAMEPERIODLASTYEAR( 'Date'[Date] )
+				)
+
+			formatStringDefinition =
+					SWITCH(
+					    SELECTEDMEASURENAME( ),
+					    "Active FTEs", "#,##0.0",
+					    "Active Headcount", "#,##0",
+					    "Contract Terminations", "#,##0",
+					    "Direct Cost / FTE", "#,##0.0",
+					    "FTEs [Paid Hours]", "#,##0.0",
+					    "Hours Overtime [paid]", "#,##0",
+					    "Hours Overtime [paid] /FTE", "#,##0.0",
+					    "Hours Overtime [paid] of [Productive Working Hours]", "0.00%;-0.00%;0.00%",
+					    "Medical Leave", "#,##0.00",
+					    "Net Sales / FTE", "#,##0.0",
+					    "Parental Leave", "#,##0",
+					    "Personal Cost / FTE", "#,##0.0",
+					    "Personal Cost / Productive Working Hours", "#,##0.0",
+					    "Pharmacy Productivity", "#,##0.00",
+					    "Productive Working Hours", "#,##0",
+					    "Remaining Holidays Days", "#,##0",
+					    "Remaining Holidays Days / FTE", "#,##0.0",
+					    "Spent Holiday Days", "#,##0",
+					    "Spent Holiday Days / FTE", "#,##0.0",
+					    "Spent Holiday Days / Productive Working Hours", "#,##0.0",
+					    "Total Headcount", "#,##0",
+					    "Turnover [%]", "0.00%;-0.00%;0.00%",
+					    "PR_5.1_Personal Costs Total ACT", "#,0,.K",
+					    "Direct Cost", "#,0,.K"
+					)
+
+		calculationItem CY = SELECTEDMEASURE( )
+
+			formatStringDefinition =
+					SWITCH(
+					    SELECTEDMEASURENAME( ),
+					    "Active FTEs", "#,##0.0",
+					    "Active Headcount", "#,##0",
+					    "Contract Terminations", "#,##0",
+					    "Direct Cost / FTE", "#,##0.0",
+					    "FTEs [Paid Hours]", "#,##0.0",
+					    "Hours Overtime [paid]", "#,##0",
+					    "Hours Overtime [paid] /FTE", "#,##0.0",
+					    "Hours Overtime [paid] of [Productive Working Hours]", "0.00%;-0.00%;0.00%",
+					    "Medical Leave", "#,##0.00",
+					    "Net Sales / FTE", "#,##0.0",
+					    "Parental Leave", "#,##0",
+					    "Personal Cost / FTE", "#,##0.0",
+					    "Personal Cost / Productive Working Hours", "#,##0.0",
+					    "Pharmacy Productivity", "#,##0.00",
+					    "Productive Working Hours", "#,##0",
+					    "Remaining Holidays Days", "#,##0",
+					    "Remaining Holidays Days / FTE", "#,##0.0",
+					    "Spent Holiday Days", "#,##0",
+					    "Spent Holiday Days / FTE", "#,##0.0",
+					    "Spent Holiday Days / Productive Working Hours", "#,##0.0",
+					    "Total Headcount", "#,##0",
+					    "Turnover [%]", "0.00%;-0.00%;0.00%",
+					    "PR_5.1_Personal Costs Total ACT", "#,0,.K",
+					    "Direct Cost", "#,0,.K"
+					)
+
+		calculationItem YoY =
+				VAR CY = SELECTEDMEASURE( )
+				VAR PY =
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        SAMEPERIODLASTYEAR( 'Date'[Date] )
+				    )
+				VAR Result = CY - PY
+				RETURN
+				    Result
+
+			formatStringDefinition =
+					SWITCH(
+					    SELECTEDMEASURENAME( ),
+					    "Active FTEs", "#,##0.0",
+					    "Active Headcount", "#,##0",
+					    "Contract Terminations", "#,##0",
+					    "Direct Cost / FTE", "#,##0.0",
+					    "FTEs [Paid Hours]", "#,##0.0",
+					    "Hours Overtime [paid]", "#,##0",
+					    "Hours Overtime [paid] /FTE", "#,##0.0",
+					    "Hours Overtime [paid] of [Productive Working Hours]", "0.00%;-0.00%;0.00%",
+					    "Medical Leave", "#,##0.00",
+					    "Net Sales / FTE", "#,##0.0",
+					    "Parental Leave", "#,##0",
+					    "Personal Cost / FTE", "#,##0.0",
+					    "Personal Cost / Productive Working Hours", "#,##0.0",
+					    "Pharmacy Productivity", "#,##0.00",
+					    "Productive Working Hours", "#,##0",
+					    "Remaining Holidays Days", "#,##0",
+					    "Remaining Holidays Days / FTE", "#,##0.0",
+					    "Spent Holiday Days", "#,##0",
+					    "Spent Holiday Days / FTE", "#,##0.0",
+					    "Spent Holiday Days / Productive Working Hours", "#,##0.0",
+					    "Total Headcount", "#,##0",
+					    "Turnover [%]", "0.00%;-0.00%;0.00%",
+					    "PR_5.1_Personal Costs Total ACT", "#,0,.K",
+					    "Direct Cost", "#,0,.K"
+					)
+
+		calculationItem YoY% =
+				//VAR CY = SELECTEDMEASURE( )
+				//VAR PY = CALCULATE( SELECTEDMEASURE( ), SAMEPERIODLASTYEAR( D_Calendar[Calendar Date] ) )
+				//VAR Result = DIVIDE( CY - PY, PY )
+				//RETURN
+				//    Result
+				VAR CY = SELECTEDMEASURE( )
+				VAR PY =
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        SAMEPERIODLASTYEAR( 'Date'[Date] )
+				    )
+				VAR Result = DIVIDE( CY - PY, ABS( PY ) ) -- Using ABS to handle negative values
+				RETURN
+				    Result
+
+			formatStringDefinition = "0.0%;-0.0%;0.0%"
+
+	column Formula
+		dataType: string
+		lineageTag: f551ef26-d86c-43fe-ba14-dc33a6a33c6e
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: dcb8f6b9-be56-45b5-8af7-3d50cdc65ed1
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

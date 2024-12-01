@@ -1,0 +1,54 @@
+table D_donor
+	lineageTag: 4e4bc84e-deab-4266-acb9-da6ea287dc79
+
+	column donor_key
+		dataType: string
+		lineageTag: 948e49c1-9266-41a2-9605-e80ecf1f3a31
+		summarizeBy: none
+		sourceColumn: donor_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column donor_name
+		dataType: string
+		lineageTag: 4e7363c2-ab7a-464a-aa0f-bfc3a35661ce
+		summarizeBy: none
+		sourceColumn: donor_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_DOB
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 013c2571-8c6f-4d41-9ee4-25aa80f04249
+		summarizeBy: none
+		sourceColumn: date_DOB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ICO
+		dataType: string
+		lineageTag: 0100a2aa-8dac-4a7f-8c59-3a24d8d3e2c0
+		summarizeBy: none
+		sourceColumn: ICO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_donor = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\D_donor.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"donor_key", type text}, {"donor_name", type text}, {"date_DOB", type date}, {"ICO", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+	annotation TabularEditor_TableGroup = DIMs
+

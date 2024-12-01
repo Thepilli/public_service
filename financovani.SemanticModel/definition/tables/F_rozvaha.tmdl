@@ -1,0 +1,62 @@
+table F_rozvaha
+	lineageTag: ebc3ad09-515b-460b-a79d-6dc9ca053ad1
+
+	column date_year
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 3bd25857-7c78-4ffe-9fcb-8a3ef867e7cb
+		summarizeBy: none
+		sourceColumn: date_year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column party_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5fb66faf-64c8-46bf-9168-3b33c1c2d3b3
+		summarizeBy: none
+		sourceColumn: party_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column bod_key
+		dataType: string
+		isHidden
+		lineageTag: 53da3544-603f-4a36-8c4a-9b5fe86920a7
+		summarizeBy: none
+		sourceColumn: bod_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 66087221-58d9-4d7a-8310-b5c537426933
+		summarizeBy: sum
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	partition F_rozvaha = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\F_rozvaha.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date_year", type date}, {"party_key", Int64.Type}, {"bod_key", type text}, {"amount", Currency.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+	annotation TabularEditor_TableGroup = FACTs
+
