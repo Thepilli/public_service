@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "financovani"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "be10711f-6174-4c4e-aa27-9032f4508dc0"
+  }
+}

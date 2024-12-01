@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "financovani"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1e7db321-32b1-4b01-9956-858c33e083eb"
+  }
+}

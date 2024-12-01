@@ -1,0 +1,60 @@
+table F_zamestnanci
+	lineageTag: 4ad7267f-2101-49e5-8122-03698a812bff
+
+	column ic
+		dataType: int64
+		formatString: 0
+		lineageTag: bf4b638d-f01b-4a2d-86c4-150e398905f0
+		summarizeBy: none
+		sourceColumn: ic
+
+		annotation SummarizationSetBy = Automatic
+
+	column job
+		dataType: string
+		lineageTag: 92d4e7e1-2afe-47df-8cd7-aa20b9d53058
+		summarizeBy: none
+		sourceColumn: job
+
+		annotation SummarizationSetBy = Automatic
+
+	column number
+		dataType: int64
+		formatString: 0
+		lineageTag: 805d0eee-2b42-47d1-a432-1b675899d3af
+		summarizeBy: sum
+		sourceColumn: number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 15c3445d-3765-49d2-88c8-0b74c085bf58
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition F_zamestnanci = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\CURATED\zamest.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"year", Int64.Type}, {"ic", Int64.Type}, {"job", type text}, {"number", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([job] <> "")),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Filtered Rows",{{"job", Text.Proper, type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Capitalized Each Word",{{"job", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"job", Text.Clean, type text}}),
+				    #"Inserted Date" = Table.AddColumn(#"Cleaned Text", "Date", each Date.From(Text.From([year], "en-US")), type date),
+				    #"Removed Columns" = Table.RemoveColumns(#"Inserted Date",{"year"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

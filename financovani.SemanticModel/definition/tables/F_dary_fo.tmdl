@@ -1,0 +1,105 @@
+table F_dary_fo
+	lineageTag: 214f08e4-c40d-416c-be67-2c8753338f7b
+
+	column party_key
+		dataType: int64
+		formatString: 0
+		lineageTag: e89d2636-6f80-4a18-aeef-3f3802daad36
+		summarizeBy: none
+		sourceColumn: party_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_donation
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 14f20597-2c94-4542-b701-4ff0e92184d5
+		summarizeBy: none
+		sourceColumn: date_donation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column amount
+		dataType: double
+		lineageTag: 7dc5680b-1dc9-4801-96b5-28c18ae50592
+		summarizeBy: sum
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lastName
+		dataType: string
+		lineageTag: 33e631ab-049e-499e-86c8-b85cfe93b081
+		summarizeBy: none
+		sourceColumn: lastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column firstName
+		dataType: string
+		lineageTag: c8e17e51-bb50-4d43-b639-189c6188799e
+		summarizeBy: none
+		sourceColumn: firstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column titleBefore
+		dataType: string
+		lineageTag: b30847e3-4ee3-47bb-8c3a-1a954f762584
+		summarizeBy: none
+		sourceColumn: titleBefore
+
+		annotation SummarizationSetBy = Automatic
+
+	column titleAfter
+		dataType: string
+		lineageTag: 7b342ee3-a3c6-4af6-8d2b-2fdd9aac1b6a
+		summarizeBy: none
+		sourceColumn: titleAfter
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_DOB
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 65f16b4c-c056-4f99-9d4a-06a13b021eaf
+		summarizeBy: none
+		sourceColumn: date_DOB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eaeabce3-feb6-432d-91fb-87785b50180b
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition F_dary_fo = m
+		mode: import
+		source = ```
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\CURATED\penizefo.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"ic", "party_key"}, {"date", "date_donation"}, {"money", "amount"}, {"birthDate", "date_DOB"}}),
+				    #"Inserted Date" = Table.AddColumn(#"Renamed Columns", "Date", each Date.From([year]), type date),
+				    #"Removed Columns" = Table.RemoveColumns(#"Inserted Date",{"year", "addrCity"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"party_key", Int64.Type}, {"date_donation", type date}, {"amount", type number}, {"date_DOB", type date}})
+				in 
+				    #"Changed Type"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

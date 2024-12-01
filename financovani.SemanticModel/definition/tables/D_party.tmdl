@@ -1,0 +1,42 @@
+table D_party
+	lineageTag: eed8fbb6-a9a9-4717-81d3-30335645ca19
+
+	column ic
+		dataType: int64
+		formatString: 0
+		lineageTag: 57f46e2a-8503-4f78-8e87-06f50fee8d2d
+		summarizeBy: none
+		sourceColumn: ic
+
+		annotation SummarizationSetBy = Automatic
+
+	column shortName
+		dataType: string
+		lineageTag: 2ec27cdb-b7ad-4adb-96fb-92377be851ef
+		summarizeBy: none
+		sourceColumn: shortName
+
+		annotation SummarizationSetBy = Automatic
+
+	column longName
+		dataType: string
+		lineageTag: ff8a0e71-e4e0-43d3-98d2-2be31fc9483a
+		summarizeBy: none
+		sourceColumn: longName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_party = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\CURATED\D_party.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ic", Int64.Type}, {"shortName", type text}, {"longName", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

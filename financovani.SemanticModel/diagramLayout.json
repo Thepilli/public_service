@@ -1,0 +1,152 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 521.99938453912966
+          },
+          "nodeIndex": "D_job",
+          "nodeLineageTag": "7e5ec7ff-9818-488a-81c8-dc44eaf8b3b2",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 356.00770536265219,
+            "y": 0
+          },
+          "nodeIndex": "D_party",
+          "nodeLineageTag": "eed8fbb6-a9a9-4717-81d3-30335645ca19",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 786.89498517273921,
+            "y": 0
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "3a79ddec-1bda-4894-9d0f-bd4ea105343c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2546.3616394153596,
+            "y": 0.5
+          },
+          "nodeIndex": "DateAutoTemplate",
+          "nodeLineageTag": "2992cf3e-26b0-4413-813c-7d872a43d06b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 956.69436109161745,
+            "y": 494.88705264973061
+          },
+          "nodeIndex": "F_prijmy",
+          "nodeLineageTag": "6cbfe9ac-92fc-49ee-af0a-31e3d5166fd4",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1236.9232988623551,
+            "y": 504.94321859443005
+          },
+          "nodeIndex": "F_vydaje",
+          "nodeLineageTag": "ee7a75ad-2cb6-4ec7-871d-4e8b9dd1e989",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 417.17239849381792,
+            "y": 791.88094368656436
+          },
+          "nodeIndex": "F_dary_fo",
+          "nodeLineageTag": "214f08e4-c40d-416c-be67-2c8753338f7b",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 691.11623254911865,
+            "y": 803.997549567903
+          },
+          "nodeIndex": "F_dary_po",
+          "nodeLineageTag": "68b1420b-4163-44c5-9143-c9a2af7e6d2f",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 685.20840257779253,
+            "y": 525.35399004547423
+          },
+          "nodeIndex": "F_dluhy",
+          "nodeLineageTag": "ba29b9e0-02f9-4692-8179-5530dd6dc970",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 325.56837245964778,
+            "y": 530.46275358290086
+          },
+          "nodeIndex": "F_zamestnanci",
+          "nodeLineageTag": "4ad7267f-2101-49e5-8122-03698a812bff",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 79.553182037699784,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

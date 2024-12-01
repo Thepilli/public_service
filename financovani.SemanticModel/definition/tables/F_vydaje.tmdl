@@ -1,0 +1,60 @@
+table F_vydaje
+	lineageTag: ee7a75ad-2cb6-4ec7-871d-4e8b9dd1e989
+
+	column party_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 004c8413-f066-45c2-9b49-59c6cdc2dbf2
+		summarizeBy: none
+		sourceColumn: party_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 4b1a9bea-4646-41cd-ac34-36d388b51cab
+		summarizeBy: sum
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column bod_key
+		dataType: string
+		lineageTag: 1336e491-06b3-416f-8c52-2b4fb6190a95
+		summarizeBy: none
+		sourceColumn: bod_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eede83f7-3e34-4e43-a5a1-9df92281779a
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition F_vydaje = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\CURATED\cvydaje.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Promoted Headers", "bod_key", each Text.Combine({"V_", Text.From([key], "en-US")}), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Merged Column",{{"amount", "amount"}, {"ic", "party_key"}, {"year", "year_key"}}),
+				    #"Inserted Date" = Table.AddColumn(#"Renamed Columns", "Date", each Date.From([year_key]), type date),
+				    #"Removed Columns" = Table.RemoveColumns(#"Inserted Date",{"year_key", "key", "description"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"party_key", Int64.Type}, {"amount", Currency.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

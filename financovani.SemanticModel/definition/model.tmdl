@@ -1,0 +1,63 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+extendedProperty SQLBI_BRAVO_ManageDatesConfiguration =
+		{
+		  "templateUri": "file:///C:/Users/jirip/AppData/Local/Bravo/.temp/ManageDates/Templates/Config-01.template.json",
+		  "isCurrent": false,
+		  "isCustom": false,
+		  "name": "Config-01",
+		  "description": "Standard gregorian calendar",
+		  "autoScan": 0,
+		  "onlyTablesColumns": [],
+		  "exceptTablesColumns": [],
+		  "isoCountry": "US",
+		  "firstYear": 2017,
+		  "lastYear": 2023,
+		  "autoNaming": 1,
+		  "targetMeasures": [],
+		  "defaults": {
+		    "firstDayOfWeek": 0
+		  },
+		  "dateAvailable": true,
+		  "dateEnabled": true,
+		  "dateTableName": "Date",
+		  "dateTableValidation": 1,
+		  "dateReferenceTableName": "DateAutoTemplate",
+		  "dateReferenceTableValidation": 1,
+		  "holidaysAvailable": true,
+		  "holidaysEnabled": false,
+		  "holidaysTableName": "Holidays",
+		  "holidaysTableValidation": 0,
+		  "holidaysDefinitionTableName": "HolidaysDefinition",
+		  "holidaysDefinitionTableValidation": 0,
+		  "timeIntelligenceAvailable": true,
+		  "timeIntelligenceEnabled": false
+		}
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
+
+annotation PBI_QueryOrder = ["F_prijmy","F_vydaje","F_dary_fo","F_dary_po","F_dluhy","F_zamestnanci","D_job","D_party"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table F_prijmy
+ref table F_vydaje
+ref table F_dary_fo
+ref table F_dary_po
+ref table F_dluhy
+ref table F_zamestnanci
+ref table D_job
+ref table D_party
+ref table DateAutoTemplate
+ref table Date
+
+ref cultureInfo en-US
+

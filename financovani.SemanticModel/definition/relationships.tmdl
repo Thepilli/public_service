@@ -1,0 +1,52 @@
+relationship AutoDetected_ab49927d-9373-43ce-a49b-12b08813b880
+	fromColumn: F_dluhy.ic
+	toColumn: D_party.ic
+
+relationship AutoDetected_b88ade00-6903-4f60-b15e-bbe4e509b720
+	fromColumn: F_zamestnanci.ic
+	toColumn: D_party.ic
+
+relationship b39ef3eb-37b0-7c45-d829-2e08eb543db2
+	fromColumn: F_prijmy.party_key
+	toColumn: D_party.ic
+
+relationship 33836997-70ab-dfa6-c55f-24a3806d23ec
+	fromColumn: F_vydaje.party_key
+	toColumn: D_party.ic
+
+relationship a33b5f98-06db-c085-df2e-d2eb9160d04a
+	fromColumn: F_dary_po.party_key
+	toColumn: D_party.ic
+
+relationship 336a85fe-6215-6647-b7d5-c3ee5a80478d
+	fromColumn: F_dary_fo.party_key
+	toColumn: D_party.ic
+
+relationship ea4b210f-9b4b-4b74-6b81-2b4aaf5e926a
+	fromColumn: F_zamestnanci.job
+	toColumn: D_job.job_key
+
+relationship 48c99c4b-6b49-6df0-2f9a-f96808e9d714
+	fromColumn: F_vydaje.Date
+	toColumn: Date.Date
+
+relationship e7828f49-b0bd-288f-0ece-2b7addda5ff2
+	fromColumn: F_prijmy.Date
+	toColumn: Date.Date
+
+relationship c2116e98-3b6c-28bc-f815-4a2f4ad5dc2d
+	fromColumn: F_dluhy.Date
+	toColumn: Date.Date
+
+relationship 9220e61d-90f3-c2ce-2de8-8c2f047918e6
+	fromColumn: F_zamestnanci.Date
+	toColumn: Date.Date
+
+relationship 6aa42112-17c2-71d6-5ee1-76f44eca6ba0
+	fromColumn: F_dary_po.Date
+	toColumn: Date.Date
+
+relationship e78fb5ba-fdc5-9848-d367-5d7284cf1f8f
+	fromColumn: F_dary_fo.Date
+	toColumn: Date.Date
+

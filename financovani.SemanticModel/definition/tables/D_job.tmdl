@@ -1,0 +1,37 @@
+table D_job
+	lineageTag: 7e5ec7ff-9818-488a-81c8-dc44eaf8b3b2
+
+	column job_key
+		dataType: string
+		lineageTag: e98912ee-8f7e-4bbf-b504-337c237c2365
+		summarizeBy: none
+		sourceColumn: job_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_group
+		dataType: string
+		lineageTag: 2d2d981d-5d4b-4cab-be28-99ac58f4fd14
+		summarizeBy: none
+		sourceColumn: job_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_job = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\CURATED\D_job.csv"),[Delimiter="	", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Column1", "job_key"}, {"Column2", "job_group"}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Renamed Columns",{{"job_key", Text.Proper, type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Capitalized Each Word",{{"job_key", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"job_key", Text.Clean, type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Cleaned Text", {"job_key"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
