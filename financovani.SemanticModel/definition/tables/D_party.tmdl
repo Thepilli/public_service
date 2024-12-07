@@ -35,7 +35,7 @@ table D_party
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\D_party.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_party.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"party_key", Int64.Type}, {"party_short", type text}, {"party_long", type text}})
 				in

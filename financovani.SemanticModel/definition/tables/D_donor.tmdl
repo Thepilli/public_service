@@ -3,6 +3,7 @@ table D_donor
 
 	column donor_key
 		dataType: string
+		isHidden
 		lineageTag: 948e49c1-9266-41a2-9605-e80ecf1f3a31
 		summarizeBy: none
 		sourceColumn: donor_key
@@ -11,6 +12,7 @@ table D_donor
 
 	column donor_name
 		dataType: string
+		isHidden
 		lineageTag: 4e7363c2-ab7a-464a-aa0f-bfc3a35661ce
 		summarizeBy: none
 		sourceColumn: donor_name
@@ -40,7 +42,7 @@ table D_donor
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\D_donor.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_donor.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"donor_key", type text}, {"donor_name", type text}, {"date_DOB", type date}, {"ICO", type text}})
 				in

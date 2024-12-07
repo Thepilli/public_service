@@ -32,7 +32,7 @@ table D_keys
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\D_keys.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_keys.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
 				in
 				    #"Promoted Headers"

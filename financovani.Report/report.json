@@ -71,70 +71,79 @@
       "width": 1280.00
     },
     {
-      "config": "{\"relationships\":[{\"source\":\"60eee68d0d84834c7e71\",\"target\":\"7aa35670879901d93e02\",\"type\":3}],\"type\":2}",
+      "config": "{\"type\":2}",
       "displayName": "party",
       "displayOption": 1,
-      "filters": "[{\"name\":\"eb2349d752597abeae7d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"D_party\"}},\"Property\":\"party_short\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"D_party\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"party_short\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'STAN'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5,\"isHiddenInViewMode\":true,\"isLockedInViewMode\":true}]",
+      "filters": "[{\"name\":\"eb2349d752597abeae7d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"D_party\"}},\"Property\":\"party_short\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"D_party\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"party_short\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'ODS'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5,\"isHiddenInViewMode\":true,\"isLockedInViewMode\":true}]",
       "height": 720.00,
       "name": "ffc2b6bc8270d9d3538c",
       "ordinal": 1,
       "visualContainers": [
         {
-          "config": "{\"name\":\"60eee68d0d84834c7e71\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":0,\"z\":4,\"width\":197.5,\"height\":720,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"listSlicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Date.Year\",\"NativeReferenceName\":\"Sum of Year\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"layout\":[{\"properties\":{\"rowCount\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}},\"fixedButtonsCount\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"2023L\"}}]]}}}]}}}}]}}}",
+          "config": "{\"name\":\"0fd3d56fed170c875009\",\"layouts\":[{\"id\":0,\"position\":{\"x\":823.8461538461538,\"y\":470.7692307692308,\"z\":3000,\"width\":456.15384615384613,\"height\":249.23076923076923,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"D_donor.donor_name\",\"active\":true}],\"Y\":[{\"queryRef\":\"_calculations.SUM of donor_amount\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"D_donor\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"donor_name\"},\"Name\":\"D_donor.donor_name\",\"NativeReferenceName\":\"donor_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of donor_amount\"},\"Name\":\"_calculations.SUM of donor_amount\",\"NativeReferenceName\":\"SUM of donor_amount\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of donor_amount\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
-          "height": 720.00,
-          "width": 197.50,
-          "x": 10.00,
-          "y": 0.00,
-          "z": 4.00
+          "height": 249.23,
+          "width": 456.15,
+          "x": 823.85,
+          "y": 470.77,
+          "z": 3000.00
         },
         {
-          "config": "{\"name\":\"62b60d85b51bcecc6e04\",\"layouts\":[{\"id\":0,\"position\":{\"x\":207.7064220183486,\"y\":491.74311926605503,\"z\":5,\"width\":1072.2935779816514,\"height\":202.56880733944953,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"_calculations.SUM of amount\"}],\"Rows\":[{\"queryRef\":\"D_keys.bod_full\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"D_keys\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of amount\"},\"Name\":\"_calculations.SUM of amount\",\"NativeReferenceName\":\"SUM of amount\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bod_full\"},\"Name\":\"D_keys.bod_full\",\"NativeReferenceName\":\"bod_full\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of amount\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"431.7493922585736D\"}}}},\"selector\":{\"metadata\":\"D_keys.bod_full\"}}]}}}",
-          "filters": "[{\"name\":\"54d885857a3462daa09d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"D_keys\"}},\"Property\":\"bod_full\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"D_keys\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bod_full\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'P_1 - Příjmy celkem'\"}}],[{\"Literal\":{\"Value\":\"'P_10 - Zápůjčky a úvěry poskytnuté bankou, platební institucí nebo institucí elektronických peněz nebo pobočkou zahraniční banky, platební instituce neboinstituce elektronických peněz na území České republiky'\"}}],[{\"Literal\":{\"Value\":\"'P_11 - Příspěvek ze státního rozpočtu České republiky na podporu činnosti politického institutu'\"}}],[{\"Literal\":{\"Value\":\"'P_2 - Příspěvek ze státního rozpočtu České republiky na úhradu volebních nákladů'\"}}],[{\"Literal\":{\"Value\":\"'P_3 - Příspěvek ze státního rozpočtu České republiky na činnost strany a hnutí (příspěvek na činnost)'\"}}],[{\"Literal\":{\"Value\":\"'P_4 - Členské příspěvky'\"}}],[{\"Literal\":{\"Value\":\"'P_5 - Dary, dědictví a bezúplatná plnění'\"}}],[{\"Literal\":{\"Value\":\"'P_6 - Příjmy z nájmu, pachtu a zcizení movitého a nemovitého majetku'\"}}],[{\"Literal\":{\"Value\":\"'P_7 - Úroky z vkladů'\"}}],[{\"Literal\":{\"Value\":\"'P_8 - Příjmy vznikající z účasti na podnikání jiných právnických osob podle § 17 odst. 3 zák. č. 424/1991 Sb., ve znění pozdějších předpisů'\"}}],[{\"Literal\":{\"Value\":\"'P_9 - Příjmy z pořádání tombol, kulturních, společenských, sportovních, rekreačních, vzdělávacích a politických akcí'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{}}]},\"isHiddenInViewMode\":false}]",
-          "height": 202.57,
-          "width": 1072.29,
-          "x": 207.71,
-          "y": 491.74,
-          "z": 5.00
+          "config": "{\"name\":\"5eb3f9fe016d4868106b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":823.8461538461538,\"y\":103.07692307692308,\"z\":6000,\"width\":456.15384615384613,\"height\":150,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"_calculations.Personal cost Monthly Avg\"}],\"Rows\":[{\"queryRef\":\"Date.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Personal cost Monthly Avg\"},\"Name\":\"_calculations.Personal cost Monthly Avg\",\"NativeReferenceName\":\"Personal cost Monthly Avg\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Date.Year\",\"NativeReferenceName\":\"Year\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 150.00,
+          "width": 456.15,
+          "x": 823.85,
+          "y": 103.08,
+          "z": 6000.00
         },
         {
-          "config": "{\"name\":\"7aa35670879901d93e02\",\"layouts\":[{\"id\":0,\"position\":{\"x\":688.440366972477,\"y\":496.8807339449541,\"z\":1,\"width\":591.5596330275229,\"height\":223.11926605504587}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Date.Year\",\"active\":true}],\"Y\":[{\"queryRef\":\"_calculations.SUM of donor_amount\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Date.Year\",\"NativeReferenceName\":\"Year\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of donor_amount\"},\"Name\":\"_calculations.SUM of donor_amount\",\"NativeReferenceName\":\"SUM of donor_amount\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "config": "{\"name\":\"5f210426da7e4070e73d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":189.23076923076923,\"y\":111.53846153846153,\"z\":5000,\"width\":484.6153846153846,\"height\":608.4615384615385,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"_calculations.SUM of amount\"}],\"Rows\":[{\"queryRef\":\"D_keys.bod_type\",\"active\":true},{\"queryRef\":\"D_keys.bod_key\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"D_keys\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of amount\"},\"Name\":\"_calculations.SUM of amount\",\"NativeReferenceName\":\"SUM of amount\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bod_type\"},\"Name\":\"D_keys.bod_type\",\"NativeReferenceName\":\"bod_type\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bod_key\"},\"Name\":\"D_keys.bod_key\",\"NativeReferenceName\":\"bod_key\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of amount\"}}}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"D_keys.bod_type\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"D_keys\"}},\"Property\":\"bod_type\"}}],\"isPinned\":true},{\"queryRefs\":[\"D_keys.bod_key\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'Výdaje'\"}}],\"isToggled\":true}]}}],\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 608.46,
+          "width": 484.62,
+          "x": 189.23,
+          "y": 111.54,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"636064be7d88bc243003\",\"layouts\":[{\"id\":0,\"position\":{\"x\":823.8461538461538,\"y\":310,\"z\":4000,\"width\":456.15384615384613,\"height\":410,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"_calculations.SUM of job_count\"}],\"Category\":[{\"queryRef\":\"D_job.job_desc\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"D_job\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of job_count\"},\"Name\":\"_calculations.SUM of job_count\",\"NativeReferenceName\":\"SUM of job_count\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"job_desc\"},\"Name\":\"D_job.job_desc\",\"NativeReferenceName\":\"job_desc\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of job_count\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 410.00,
+          "width": 456.15,
+          "x": 823.85,
+          "y": 310.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"7aa35670879901d93e02\",\"layouts\":[{\"id\":0,\"position\":{\"x\":688.440366972477,\"y\":496.8807339449541,\"z\":1000,\"width\":591.5596330275229,\"height\":223.11926605504587,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Date.Year\",\"active\":true}],\"Y\":[{\"queryRef\":\"_calculations.SUM of donor_amount\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Date.Year\",\"NativeReferenceName\":\"Year\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of donor_amount\"},\"Name\":\"_calculations.SUM of donor_amount\",\"NativeReferenceName\":\"SUM of donor_amount\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
           "height": 223.12,
           "width": 591.56,
           "x": 688.44,
           "y": 496.88,
-          "z": 1.00
+          "z": 1000.00
         },
         {
-          "config": "{\"name\":\"96bc86a65bae3610cd85\",\"layouts\":[{\"id\":0,\"position\":{\"x\":951.1926605504586,\"y\":0,\"width\":328.80733944954136,\"height\":223.11926605504587,\"z\":6}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"_calculations.SUM of amount\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of amount\"},\"Name\":\"_calculations.SUM of amount\",\"NativeReferenceName\":\"SUM of amount\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of amount\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "config": "{\"name\":\"818d75ad80e98b8b94a3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":111.53846153846153,\"width\":150,\"height\":608.4615384615385,\"z\":6001}}],\"singleVisual\":{\"visualType\":\"listSlicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.Calendar.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Hierarchy\":\"Calendar\"}},\"Level\":\"Year\"},\"Name\":\"Date.Calendar.Year\",\"NativeReferenceName\":\"Calendar Year\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Hierarchy\":\"Calendar\"}},\"Level\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"2022L\"}}],[{\"Literal\":{\"Value\":\"2023L\"}}]]}}}]}}}}]},\"cachedFilterDisplayItems\":[{\"id\":{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Date\"}},\"Property\":\"Year\"}},\"Right\":{\"Literal\":{\"Value\":\"2022L\"}}}}},\"displayName\":\"2022\"},{\"id\":{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Date\"}},\"Property\":\"Year\"}},\"Right\":{\"Literal\":{\"Value\":\"2023L\"}}}}},\"displayName\":\"2023\"}]}}",
           "filters": "[]",
-          "height": 223.12,
-          "width": 328.81,
-          "x": 951.19,
-          "y": 0.00,
-          "z": 6.00
+          "height": 608.46,
+          "width": 150.00,
+          "x": 0.00,
+          "y": 111.54,
+          "z": 6001.00
         },
         {
-          "config": "{\"name\":\"b37a727317c673c1ca2c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":293.57798165137615,\"y\":0,\"z\":2,\"width\":657.6146788990825,\"height\":223.11926605504587}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"D_party.SELECTEDVALUE of party_long\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"D_party\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"SELECTEDVALUE of party_long\"},\"Name\":\"D_party.SELECTEDVALUE of party_long\",\"NativeReferenceName\":\"SELECTEDVALUE of party_long\"}]},\"autoSelectVisualType\":false,\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"b37a727317c673c1ca2c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":155.3846153846154,\"y\":0,\"z\":2000,\"width\":526.9230769230769,\"height\":111.53846153846153,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"D_party.SELECTEDVALUE of party_long\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"D_party\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"SELECTEDVALUE of party_long\"},\"Name\":\"D_party.SELECTEDVALUE of party_long\",\"NativeReferenceName\":\"SELECTEDVALUE of party_long\"}]},\"autoSelectVisualType\":false,\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
-          "height": 223.12,
-          "width": 657.61,
-          "x": 293.58,
+          "height": 111.54,
+          "width": 526.92,
+          "x": 155.38,
           "y": 0.00,
-          "z": 2.00
+          "z": 2000.00
         },
         {
-          "config": "{\"name\":\"ca29e59b022600b87853\",\"layouts\":[{\"id\":0,\"position\":{\"x\":207.7064220183486,\"y\":231.92660550458714,\"z\":3,\"width\":1072.2935779816514,\"height\":202.56880733944953,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"_calculations.SUM of amount\"}],\"Rows\":[{\"queryRef\":\"D_keys.bod_full\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_calculations\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"D_keys\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"SUM of amount\"},\"Name\":\"_calculations.SUM of amount\",\"NativeReferenceName\":\"SUM of amount\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bod_full\"},\"Name\":\"D_keys.bod_full\",\"NativeReferenceName\":\"bod_full\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bod_full\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"431.7493922585736D\"}}}},\"selector\":{\"metadata\":\"D_keys.bod_full\"}}]}}}",
-          "filters": "[{\"name\":\"54d885857a3462daa09d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"D_keys\"}},\"Property\":\"bod_full\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"D_keys\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bod_full\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'V_1 - Mzdové výdaje'\"}}],[{\"Literal\":{\"Value\":\"'V_2 - Výdaje na daně, poplatky a jiná obdobná peněžitá plnění'\"}}],[{\"Literal\":{\"Value\":\"'V_3a - volby do Poslanecké sněmovny Parlamentu ČR'\"}}],[{\"Literal\":{\"Value\":\"'V_3b - volby do Senátu Parlamentu ČR'\"}}],[{\"Literal\":{\"Value\":\"'V_3c - volba prezidenta republiky'\"}}],[{\"Literal\":{\"Value\":\"'V_3d - volby do zastupitelstev krajů'\"}}],[{\"Literal\":{\"Value\":\"'V_3e - volby do zastupitelstev obcí'\"}}],[{\"Literal\":{\"Value\":\"'V_3f - volby do Evropského parlamentu'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{}}]},\"isHiddenInViewMode\":false}]",
-          "height": 202.57,
-          "width": 1072.29,
-          "x": 207.71,
-          "y": 231.93,
-          "z": 3.00
-        },
-        {
-          "config": "{\"name\":\"caa7273a5193c573bb78\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":0}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "config": "{\"name\":\"caa7273a5193c573bb78\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":0,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
           "filters": "[]",
           "height": 40.00,
           "width": 100.00,

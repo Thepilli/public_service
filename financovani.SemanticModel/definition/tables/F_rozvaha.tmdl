@@ -48,7 +48,7 @@ table F_rozvaha
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\F_rozvaha.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/F_rozvaha.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date_year", type date}, {"party_key", Int64.Type}, {"bod_key", type text}, {"amount", Currency.Type}})
 				in

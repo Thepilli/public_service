@@ -8,12 +8,6 @@ table _calculations
 		displayFolder: format
 		lineageTag: 5f621c5f-2889-47cc-9c2f-73f163bebb58
 
-	/// This measure is the DISTINCTCOUNT of column 'F_dary'[donor_key]
-	measure 'DISTINCTCOUNT of donor_key' = DISTINCTCOUNT('F_dary'[donor_key])
-		formatString: 0.00
-		displayFolder: aggs.\F_dary
-		lineageTag: 396cd315-55a2-4c45-a7dc-3df95b505126
-
 	/// This measure is the sum of column 'F_dary'[donor_amount]
 	measure 'SUM of donor_amount' = SUM('F_dary'[donor_amount])
 		formatString: #,##0.00
@@ -205,6 +199,37 @@ table _calculations
 		formatString: #,##0.00
 		displayFolder: F_rozvaha\Výdaje
 		lineageTag: 801bfb6a-9d23-4e12-acc1-80c5fd272ee6
+
+	/// This measure is the DISTINCTCOUNT of column 'D_donor'[donor_name]
+	measure 'DISTINCTCOUNT of donor_name' = DISTINCTCOUNT('D_donor'[donor_name])
+		formatString: 0.00
+		displayFolder: aggs.\F_dary
+		lineageTag: 847ad759-59bb-44bb-915d-912a0ca17e91
+
+	/// This measure is the sum of column 'F_dary'[donor_amount]
+	measure 'AVERAGE of donor_amount' = AVERAGE('F_dary'[donor_amount])
+		formatString: #,##0.00 %
+		displayFolder: aggs.\F_dary
+		lineageTag: 7ca863bb-ed80-4c75-8e68-bb38cce4df57
+
+	/// This measure is the COUNT of column 'F_dary'[donor_key]
+	measure 'COUNT of donor_key' = COUNT('F_dary'[donor_key])
+		formatString: #,##0
+		displayFolder: aggs.\F_dary
+		lineageTag: 6117d338-f2cf-42f3-a9e1-4ba463501af4
+
+	measure 'Personal cost Monthly Avg' =
+			//DIVIDE( DIVIDE( [Vydaje V_1], [SUM of job_count] ), 12 )
+			
+			
+			AVERAGEX
+			(
+			    VALUES( 'Date'[Year] ),
+			    DIVIDE( DIVIDE( [Vydaje V_1], [SUM of job_count] ), 12 )
+			)
+		formatString: 0
+		displayFolder: F_zamestnanci
+		lineageTag: 4f0c36aa-d851-4955-83c0-89acdc661786
 
 	partition _calculations = m
 		mode: import

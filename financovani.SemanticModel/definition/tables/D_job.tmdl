@@ -30,7 +30,7 @@ table D_job
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\jirip\Documents\Developer\python\Public Service\PBI\D_job.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_job.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"job_key", Int64.Type}})
 				in
