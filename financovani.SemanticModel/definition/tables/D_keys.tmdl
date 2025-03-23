@@ -28,11 +28,19 @@ table D_keys
 	column bod_full = D_keys[bod_key]&" - "&D_keys[bod_desc]
 		lineageTag: f9c90a14-07fc-4067-b637-0aa253315716
 
+	column bod_desc_short
+		dataType: string
+		lineageTag: d3bddc9c-b70c-4912-a4c8-70fe2cd90b14
+		summarizeBy: none
+		sourceColumn: bod_desc_short
+
+		annotation SummarizationSetBy = Automatic
+
 	partition D_keys = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_keys.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_keys.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
 				in
 				    #"Promoted Headers"

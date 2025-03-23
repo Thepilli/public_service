@@ -10,25 +10,25 @@ table _calculations
 
 	/// This measure is the sum of column 'F_dary'[donor_amount]
 	measure 'SUM of donor_amount' = SUM('F_dary'[donor_amount])
-		formatString: #,##0.00
+		formatString: #,##0
 		displayFolder: aggs.\F_dary
 		lineageTag: bd757a6b-7b3a-4c1d-8f95-8ed51ee5ca5d
 
 	/// This measure is the sum of column 'F_rozvaha'[amount]
 	measure 'SUM of amount' = SUM('F_rozvaha'[amount])
-		formatString: #,##0.00
+		formatString: #,##0
 		displayFolder: aggs.\F_rozvaha
 		lineageTag: fa132557-7022-4311-aeb3-d9cf2384c4d8
 
 	/// This measure is the DISTINCTCOUNT of column 'F_zamestnanci'[job_key]
 	measure 'DISTINCTCOUNT of job_key' = DISTINCTCOUNT('F_zamestnanci'[job_key])
-		formatString: 0.00
+		formatString: #,##0
 		displayFolder: aggs.\F_zamestnanci
 		lineageTag: 3b5eca21-3806-453e-b549-a1d2baaf7429
 
 	/// This measure is the sum of column 'F_zamestnanci'[job_count]
 	measure 'SUM of job_count' = SUM('F_zamestnanci'[job_count])
-		formatString: #,##0.00
+		formatString: #,##0
 		displayFolder: aggs.\F_zamestnanci
 		lineageTag: bc19e616-d8ec-418a-81d3-6aed2d24af78
 
@@ -201,14 +201,14 @@ table _calculations
 		lineageTag: 801bfb6a-9d23-4e12-acc1-80c5fd272ee6
 
 	/// This measure is the DISTINCTCOUNT of column 'D_donor'[donor_name]
-	measure 'DISTINCTCOUNT of donor_name' = DISTINCTCOUNT('D_donor'[donor_name])
-		formatString: 0.00
+	measure 'DISTINCTCOUNT of donor_key' = DISTINCTCOUNT('F_dary'[donor_key])
+		formatString: #,##0
 		displayFolder: aggs.\F_dary
 		lineageTag: 847ad759-59bb-44bb-915d-912a0ca17e91
 
 	/// This measure is the sum of column 'F_dary'[donor_amount]
 	measure 'AVERAGE of donor_amount' = AVERAGE('F_dary'[donor_amount])
-		formatString: #,##0.00 %
+		formatString: #,##0.00
 		displayFolder: aggs.\F_dary
 		lineageTag: 7ca863bb-ed80-4c75-8e68-bb38cce4df57
 
@@ -227,9 +227,270 @@ table _calculations
 			    VALUES( 'Date'[Year] ),
 			    DIVIDE( DIVIDE( [Vydaje V_1], [SUM of job_count] ), 12 )
 			)
-		formatString: 0
+		formatString: #,##0.00
 		displayFolder: F_zamestnanci
 		lineageTag: 4f0c36aa-d851-4955-83c0-89acdc661786
+
+	measure 'Total dary' = ```
+			[SUM of donor_amount]
+			
+			```
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 51ef7193-3d8c-41b9-ba72-42ba045a3061
+
+	measure 'Total dary FO' =
+			CALCULATE
+			(
+			    [SUM of donor_amount],
+			    D_donor[donor_form]="FO"
+			)
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 9c26c508-161a-491e-b872-7b26b8e6ceaa
+
+	measure 'Total dary PO' =
+			CALCULATE([SUM of donor_amount]
+			,D_donor[donor_form]="PO")
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 39944a09-8f3f-408e-8683-6362eabe1a5f
+
+	/// This measure is the sum of column 'D_donor'[Age]
+	measure 'AVERAGE of Age' = AVERAGE('D_donor'[Age])
+		formatString: #,##0.00 %
+		displayFolder: aggs.\F_dary
+		lineageTag: 467253d5-d0e3-418e-aa9a-f75debac9474
+
+	measure 'Average donor age' =
+			AVERAGEX(
+			    F_dary,RELATED(D_donor[Age])
+			)
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: f762efc6-4de2-4bfd-a977-0d621a9e0133
+
+	measure 'Total dary PO ratio' = ```
+			VAR _PO = [Total dary PO]
+			VAR _All = [Total dary]
+			    
+			VAR _divide = DIVIDE( _PO, _All )
+			RETURN
+			    IF(
+			        ISBLANK( _divide ) && _All <> BLANK( ),
+			        0,
+			        _divide
+			    )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: F_dary
+		lineageTag: 19270f02-de98-40b4-9871-17c24e17dbfd
+
+	measure 'Total dary FO ratio' = ```
+			VAR _FO = [Total dary FO]
+			VAR _All = [Total dary]
+			    
+			VAR _divide = DIVIDE( _FO, _All )
+			RETURN
+			    IF(
+			        ISBLANK( _divide ) && _All <> BLANK( ),
+			        0,
+			        _divide
+			    )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: F_dary
+		lineageTag: a6dc8027-4386-4d78-ae50-2f0cb1035242
+
+	measure 'Total dary FO-daily' =
+			CALCULATE
+			(
+			 [Total dary FO],   USERELATIONSHIP( F_dary[donor_date], 'Date'[Date] )
+			)
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 15732d6d-7652-4a60-89e3-7dbb68d099d3
+
+	measure 'Count darci FO' = CALCULATE([Count darci],D_donor[donor_form] ="FO")
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 1903ddcd-379f-4b98-a633-04b1885f8c1d
+
+	measure 'Count darci PO' = CALCULATE([Count darci],D_donor[donor_form] ="PO")
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: d22fbb5b-c58a-4eb1-9e69-c674ab505211
+
+	measure 'Count darci' = CALCULATE( [DISTINCTCOUNT of donor_key], F_dary[donor_amount] > 0 )
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 11d6e36c-9ada-4227-9276-97242445fe3d
+
+	measure 'Count transakce' = ```
+			[COUNT of donor_key]
+			
+			```
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: c785247d-3b25-4de7-857a-e54525220bc8
+
+	measure 'Count transakce FO' = CALCULATE([Count transakce],D_donor[donor_form] ="FO")
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: f4408414-1286-400a-bc0e-0e66dbe6b620
+
+	measure 'Count transakce PO' = CALCULATE([Count transakce],D_donor[donor_form] ="PO")
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: f68797a0-b724-4c12-9f6e-008bbb2ef7ff
+
+	measure 'Count transakce FO ratio' = ```
+			VAR _FO = [Count transakce FO]
+			VAR _All = [Count transakce]
+			    
+			VAR _divide = DIVIDE( _FO, _All )
+			RETURN
+			    IF(
+			        ISBLANK( _divide ) && _All <> BLANK( ),
+			        0,
+			        _divide
+			    )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: F_dary
+		lineageTag: edec3f91-ed2f-48ad-9e21-28d464e23a4c
+
+	measure 'Count transakce PO ratio' = ```
+			VAR _PO = [Count transakce PO]
+			VAR _All = [Count transakce]
+			    
+			VAR _divide = DIVIDE( _PO, _All )
+			RETURN
+			    IF(
+			        ISBLANK( _divide ) && _All <> BLANK( ),
+			        0,
+			        _divide
+			    )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: F_dary
+		lineageTag: fa577ce3-0f3c-4f9b-9cad-c77a9a0d081f
+
+	measure 'Count darci FO ratio' = ```
+			VAR _FO = [Count darci FO]
+			VAR _All = [Count darci]
+			    
+			VAR _divide = DIVIDE( _FO, _All )
+			RETURN
+			    IF(
+			        ISBLANK( _divide ) && _All <> BLANK( ),
+			        0,
+			        _divide
+			    )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: F_dary
+		lineageTag: af62a348-1b73-41d7-a605-c405a84ca0ad
+
+	measure 'Count darci PO ratio' = ```
+			VAR _PO = [Count darci PO]
+			VAR _All = [Count darci]
+			    
+			VAR _divide = DIVIDE( _PO, _All )
+			RETURN
+			    IF(
+			        ISBLANK( _divide ) && _All <> BLANK( ),
+			        0,
+			        _divide
+			    )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: F_dary
+		lineageTag: 5a652b94-9596-4faf-bb57-be81882b5975
+
+	measure 'Total zamestnanci' = ```
+			    [SUM of job_count]
+			```
+		formatString: #,##0.00
+		displayFolder: F_zamestnanci
+		lineageTag: 423b9301-f87c-40e2-902a-61360c3b41d0
+
+	measure Measure = COUNTROWS(F_dary)
+		displayFolder: F_dary
+		lineageTag: c2424d0c-06ed-4cee-b590-6272e42f518e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average dary' = ```
+			[AVERAGE of donor_amount]
+			
+			```
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 23e41351-74fc-4215-8aa6-44f9ae42a5f6
+
+	measure 'Average dary FO' =
+			CALCULATE
+			(
+			    [Average dary],
+			    D_donor[donor_form]="FO"
+			)
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: c0972864-10a2-4e5d-a4b3-2e86db783075
+
+	measure 'Average dary PO' =
+			CALCULATE([Average dary]
+			,D_donor[donor_form]="PO")
+		formatString: #,##0
+		displayFolder: F_dary
+		lineageTag: 63fcc84a-2dcb-4b85-a0cf-531560acfbd9
+
+	measure _slicer = COUNTROWS(F_dary)
+		formatString: 0
+		displayFolder: format
+		lineageTag: a4fe8486-e730-425e-a675-bbcacc9640a3
+
+	measure 'Total dary-copy' = ```
+			VAR _PO = [Total dary]
+			VAR _All = CALCULATE([Total dary], ALLSELECTED(D_donor))
+			    
+			VAR _divide = DIVIDE( _PO, _All )
+			RETURN
+			    IF(
+			        ISBLANK( _divide ) && _All <> BLANK( ),
+			        0,
+			        _divide
+			    )
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: F_dary
+		lineageTag: a48c93fa-d95a-422e-972d-a3ceda2d9d0d
+
+	measure 'Total Dary_title' =
+			VAR _lastDate =
+			    CALCULATE( MAX( F_dary[date_year] ) )
+			VAR _year = FORMAT( _lastDate, "YYYY" )
+			RETURN
+			    CONCATENATE( "Total dary for: ", _year )
+		displayFolder: format
+		lineageTag: fd78d0ee-54ea-4f26-bbba-825ad8423529
+
+	measure KPI_subtitle =
+			VAR _lastDate =
+			    CALCULATE( MAX( F_dary[date_year] ) )
+			VAR _year = FORMAT( _lastDate, "YYYY" )
+			RETURN
+			    CONCATENATE( "Evolution for: ", _year )
+		displayFolder: format
+		lineageTag: 913c7feb-f06b-4e4f-96b8-b64885b702a3
+
+	measure 'Vydaje V_3' =
+			CALCULATE(
+			    [SUM of amount],D_keys[bod_key] IN {"V_3a","V_3b","V_3c","V_3d","V_3e","V_3f"}  )
+		formatString: #,##0.00
+		displayFolder: F_rozvaha\Výdaje
+		lineageTag: 0e8ae286-d872-40bc-bb5d-4760079c8b77
 
 	partition _calculations = m
 		mode: import
@@ -242,4 +503,6 @@ table _calculations
 				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

@@ -2,7 +2,13 @@ table Date
 	lineageTag: 3a79ddec-1bda-4894-9d0f-bd4ea105343c
 	dataCategory: Time
 
+	/// This measure is the MAX of column 'Date'[Date]
+	measure 'MAX of Date' = MAX('Date'[Date])
+		formatString: mmyyyy
+		lineageTag: 365a402d-c9e6-4d2a-9937-26fb75687c15
+
 	column Date
+		isHidden
 		isKey
 		formatString: m/d/yyyy
 		lineageTag: 40acb0e8-c296-4db7-ae8a-d0098f089b39

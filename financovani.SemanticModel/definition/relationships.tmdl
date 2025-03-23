@@ -34,3 +34,8 @@ relationship 9e253bf7-12c5-1415-21fb-a57d132458ee
 	fromColumn: F_rozvaha.party_key
 	toColumn: D_party.party_key
 
+relationship 2ef5ceb8-9dd4-f59c-a24e-b48c765ec701
+	isActive: false
+	fromColumn: F_dary.donor_date
+	toColumn: Date.Date
+

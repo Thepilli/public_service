@@ -38,11 +38,28 @@ table D_donor
 
 		annotation SummarizationSetBy = Automatic
 
+	column donor_form
+		dataType: string
+		lineageTag: bdf78ab9-1ad6-4767-bea0-a1587491f58e
+		summarizeBy: none
+		sourceColumn: donor_form
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age =
+			IF
+			(
+			    AND(YEAR(D_donor[date_DOB]) > 1901, YEAR(D_donor[date_DOB]) < 2015),
+			    DATEDIFF( D_donor[date_DOB], TODAY( ), YEAR )
+			)
+		isHidden
+		lineageTag: 7c8a6009-0f7c-493f-bcdc-cd97105b3ad9
+
 	partition D_donor = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_donor.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Thepilli/public_service/refs/heads/main/PBI/D_donor.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"donor_key", type text}, {"donor_name", type text}, {"date_DOB", type date}, {"ICO", type text}})
 				in
